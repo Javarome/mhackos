@@ -1,0 +1,38 @@
+{
+  "name": "@javarome/mhackos",
+  "type": "module",
+  "author": "Jérôme Beau (javarome@gmail.com)",
+  "version": "0.0.1",
+  "description": "MacOS hacking tool",
+  "exports": "./index.js",
+  "types": "./index.d.ts",
+  "license": "MIT",
+  "homepage": "https://github.com/Javarome/mhackos#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Javarome/mhackos.git"
+  },
+  "scripts": {
+    "prebuild": "npm install && npm test",
+    "build": "rm -Rf dist && cp -R src dist && tsc && cp README.md dist && cp package*.json dist",
+    "test": "node --test src/**/*.test.mjs src/*.test.mjs",
+    "test:cli": "npx .",
+    "publish": "npm run build && cd dist && npm publish && cd .."
+  },
+  "bin": {
+    "mhackos": "cli/index.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "typescript": "^5.4.5",
+    "@javarome/fileutil": "^0.2.2"
+  },
+  "keywords": [
+    "macos",
+    "hacking",
+    "file system"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
